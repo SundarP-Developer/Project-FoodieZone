@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+body{
+	width:100%;
+	height:auto;
+	margin:0px;
+	padding:0px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color:#eefcfd;
+}
+.navbar button{
+	width:130px;
+	height:40px;
+	border:1px solid white;
+	font-size:20px;
+	background-color:white;
+	color:blue;
+	border-radius:5px;
+	cursor:pointer;
+}
+.navbar a{
+	position:absolute;
+	top:15px;
+	right:50px;
+}
+#quantity::-webkit-outer-spin-button,
+#quantity::-webkit-inner-spin-button{
+	-webkit-appearance:none;
+}
+#quantity:hover{
+	outline:none;
+}
+.foods{
+	width:400px;
+	height:300px;
+	border:2px solid black;
+	display:inline-block; 
+	margin-left:50px; 
+	width:400px; 
+	height:300px;
+	background-color:white;
+	box-shadow: 0 0 20px #9191ff;	
+}

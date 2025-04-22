@@ -7,9 +7,29 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="bookng.css">
 </head>
-<body style=background-color:#eefcfd;>
+<style>
+.content a button{
+	width:200px;
+	height:40px;
+	border:none;
+	background-color:blue;
+	color:white;
+	border-radius:5px;
+	cursor:pointer;
+	font-size:18px;
+}
+.content a {
+	position:relative;
+	top:-40px;
+	left:160px;
+}
+.content a button:hover{
+	transform:translateY(-3px);
+}
+</style>
+<body style=background-color:#4ddeea;>
 
-	<div class="content" style="width:80%; top:70px; left:10%;	background-color:white;">
+	<div class="content" style="width:80%; top:45px; left:10%;	background-color:#eefcfd;">
 	<h2>Booking</h2>
 	
 	<form action="user" method="post">
@@ -52,11 +72,13 @@
 	<label>Vault Password</label>
 	<input style="margin-left:7px;" id="vault_pass" type="password" name="vault_pass" placeholder="password"><br>
 	
-	<button style="margin-left:79%; margin-top:-30px;" class="next" onclick = "next(event)">Order</button>
+	
+	<button style="margin-left:79%; margin-bottom:0px;" class="next" onclick = "next(event)">Order</button>
 	
 	
 	</form>	
 	
+	<a class="vault_balance" href="check_balance.jsp"><button >Check Vault Balance</button></a>
 	
 	</div>
 	<script type="text/javascript" src="booking.js"></script>

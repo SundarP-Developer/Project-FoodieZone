@@ -48,7 +48,6 @@ public class added extends HttpServlet {
 		try {
 			ans=Admin.add(hotel_name,phone_number,location);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

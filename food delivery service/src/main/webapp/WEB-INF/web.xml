@@ -229,4 +229,14 @@
     <servlet-name>delete_booking</servlet-name>
     <url-pattern>/delete_booking</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>check_balance</display-name>
+    <servlet-name>check_balance</servlet-name>
+    <servlet-class>home.check_balance</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>check_balance</servlet-name>
+    <url-pattern>/check_balance</url-pattern>
+  </servlet-mapping>
 </web-app>

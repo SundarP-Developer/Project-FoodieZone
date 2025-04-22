@@ -20,7 +20,7 @@
 	position:relative;
 	top:0px;
 	left:10%;
-	border:1px solid black;
+	border:none;
 	overflow-y:scroll;
 	}
 	::-webkit-scrollbar{

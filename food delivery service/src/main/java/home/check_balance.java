@@ -7,17 +7,19 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
- * Servlet implementation class total_cal
+ * Servlet implementation class check_balance
  */
-public class total_cal extends HttpServlet {
+public class check_balance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public total_cal() {
+    public check_balance() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,31 +39,36 @@ public class total_cal extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		String hotel_name=request.getParameter("hotel_name");
-		String food_name=request.getParameter("food_name");
-		String quantity=request.getParameter("quantity");
-		String price=request.getParameter("price");
+		String vault_id=request.getParameter("vault_id");
+		String pass=request.getParameter("pass");
 		
-		int prices=Integer.parseInt(price);
-		int quantitys=Integer.parseInt(quantity);
+		System.out.println("ch is :"+vault_id+pass);
 		
-		int total=0;
-		int balance=0;
+		ResultSet rs=null;
+		int vault_amt=0;
 		
-		total=User_Process.total(quantitys, prices);
-		
-		if(total!=0) {
-			request.setAttribute("total", total);
-			request.setAttribute("food_name",food_name);
-			request.setAttribute("hotel_name", hotel_name);
-			request.setAttribute("quantity",quantity);
-			request.setAttribute("price", price);
+		try {
+			rs=User_Process.check_balance(vault_id, pass);
+			
+			if(rs.next()) {
+				vault_amt=rs.getInt("vault_amount");
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		if(true) {
-			RequestDispatcher dispatch=request.getRequestDispatcher("payment.jsp");
-			dispatch.forward(request, response);
+		
+		System.out.println("vault amount is :"+vault_amt);
+		
+		if(rs!=null) {
+			request.setAttribute("vault_id", vault_id);
+			request.setAttribute("balance", vault_amt);
+			
+				RequestDispatcher dispatch=request.getRequestDispatcher("vault_balance.jsp");
+				dispatch.forward(request, response);
 		}
-	
+
 	}
 
 }

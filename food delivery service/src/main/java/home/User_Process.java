@@ -164,5 +164,19 @@ public class User_Process {
 		
 		return total;
 	}
+	public static ResultSet check_balance(String vault_id,String pass) throws ClassNotFoundException, SQLException {
+		
+		Connection connect=User_Process.connection();
+		
+		String query="select vault_amount from vault where vaultId = ? && password = ?";
+		PreparedStatement pst=connect.prepareStatement(query);
+		
+		pst.setString(1, vault_id);
+		pst.setString(2, pass);
+		
+		ResultSet rs=pst.executeQuery();
+		
+		return rs;
+	}
 	
 }

@@ -51,10 +51,11 @@
 	.box1 .od{
 	margin-bottom:30px;
 	margin-left:44%;
+	color:blue;
 	}
 	.box1{
 	width:99%;
-	height:auto;
+	height:500px;
 	overflow-y:scroll;
 	border:none;
 	position:relative;
@@ -71,12 +72,12 @@
 	}
 	#tab .head{
 	text-align:center;
-	color:blue;
 	background-color:blue;
 	color:white;
 	padding :10px;
-	border-left:1px solid white;
 	border-radius:5px;
+	border:none;
+	border-right:1px solid white;
 	}
 	#tab .content{
 	border-collapse:collapse;

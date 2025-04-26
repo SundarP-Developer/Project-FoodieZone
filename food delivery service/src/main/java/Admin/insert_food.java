@@ -1,6 +1,7 @@
 package Admin;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import java.sql.SQLException;
 /**
  * Servlet implementation class insert_food 
  */
+@WebServlet("/Admin")
+@MultipartConfig
 public class insert_food extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,18 +49,18 @@ public class insert_food extends HttpServlet {
 		String hotel_name=request.getParameter("hotel_name");
 		String food_name = request.getParameter("food_name");
 		String price=request.getParameter("price");
-//		Part filePart = request.getPart("photo");
+		Part filePart = request.getPart("photo");
 		
-//		String FileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-//		
-//		InputStream photo = filePart.getInputStream();
+		String FileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+		
+		InputStream photo = filePart.getInputStream();
 		
 		int prices = Integer.parseInt(price);
 		
 		System.out.println(hotel_name+food_name+prices);
 		
 		try {
-			ans=Admin.insert_food(hotel_name,food_name,prices);	
+			ans=Admin.insert_food(hotel_name,food_name,prices,photo);	
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

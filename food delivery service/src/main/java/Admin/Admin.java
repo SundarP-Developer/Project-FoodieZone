@@ -1,6 +1,6 @@
 package Admin;
 
-import java.io.InputStream;
+import java.io.InputStream;	
 import java.sql.Connection;	
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -60,15 +60,16 @@ public class Admin {
     	return ans;
 	}
 	
-	public static boolean insert_food(String hotel_name,String food_name,int price) throws ClassNotFoundException, SQLException {
+	public static boolean insert_food(String hotel_name,String food_name,int price,InputStream photo) throws ClassNotFoundException, SQLException {
 		
 		boolean ans=false;
 		Connection connect=Admin.connection();
 		
-		String query="insert into "+ hotel_name +"(Food,Price) values(?,?)";
+		String query="insert into "+ hotel_name +"(Food,Price,photo) values(?,?,?)";
 		PreparedStatement pst=connect.prepareStatement(query);
 		pst.setString(1, food_name);
 		pst.setInt(2, price);
+		pst.setBlob(3, photo);
 		int rs=pst.executeUpdate();
 		
 		if(rs>0)

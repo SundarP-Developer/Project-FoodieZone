@@ -18,7 +18,7 @@
 	height:auto;
 	position:relative;
 	top:80px;
-	left:35%;
+	left:36%;
 	border-radius:20px;
 	box-shadow: 0px 0px 30px black;
 	background-color:white;
@@ -95,6 +95,8 @@
 	cursor:pointer;}
 	</style>
 <body style=background-color:#eefcfd;>
+
+	<img alt="successful" src="images/payment.png" style="width:500px;height:500px;position:absolute;top:100px;left:160px;z-index:2;">
 	<div class="content">
 	
 	<h1>Select your payment method</h1>

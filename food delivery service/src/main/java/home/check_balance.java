@@ -1,30 +1,25 @@
-package Admin;
+package home;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class insert_food 
+ * Servlet implementation class check_balance
  */
-@WebServlet("/Admin")
-@MultipartConfig
-public class insert_food extends HttpServlet {
+public class check_balance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public insert_food() {
+    public check_balance() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,32 +39,36 @@ public class insert_food extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		boolean ans=false;
+		String vault_id=request.getParameter("vault_id");
+		String pass=request.getParameter("pass");
 		
-		String hotel_name=request.getParameter("hotel_name");
-		String food_name = request.getParameter("food_name");
-		String price=request.getParameter("price");
-		Part filePart = request.getPart("photo");
+		System.out.println("ch is :"+vault_id+pass);
 		
-		String FileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-		
-		InputStream photo = filePart.getInputStream();
-		
-		int prices = Integer.parseInt(price);
-		
-		System.out.println(hotel_name+food_name+prices);
+		ResultSet rs=null;
+		int vault_amt=0;
 		
 		try {
-			ans=Admin.insert_food(hotel_name,food_name,prices,photo);	
+			rs=User_Process.check_balance(vault_id, pass);
+			
+			if(rs.next()) {
+				vault_amt=rs.getInt("vault_amount");
+			}
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		if(ans) {
-			response.sendRedirect("inserted_food.jsp");
-		}
+		System.out.println("vault amount is :"+vault_amt);
 		
+		if(rs!=null) {
+			request.setAttribute("vault_id", vault_id);
+			request.setAttribute("balance", vault_amt);
+			
+				RequestDispatcher dispatch=request.getRequestDispatcher("vault_balance.jsp");
+				dispatch.forward(request, response);
+		}
+
 	}
 
 }

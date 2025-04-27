@@ -71,7 +71,7 @@
 
 	<div class="content">
 	<h1>Insert Food</h1>
-	<form action="insert_food" method="post">
+	<form action="insert_food" method="post" enctype="multipart/form-data">
 	
 	<label>Enter Hotel Name</label>
 	<input type="text" id="hotel_name" name="hotel_name" placeholder="Hotel Name" required><br>
@@ -81,6 +81,9 @@
 	
 	<label>Enter Food Price</label>
 	<input type="number" id="price" name="price" placeholder="Price" required><br>
+	
+	<label>Enter Food Image</label>
+	<input type="file" name="photo">
 	
 	<button onclick="insert(event)">Insert</button>
 	

@@ -47,7 +47,8 @@ body{
 <body>
 	<div class="content">
 	<h1>" Your vault amount is lower than the total!!! "</h1>
-	<a href="booking.jsp"><button>Back</button></a>
+	<h1>" Or no vault is present with this id and password "</h1>
+	<a href="hotelList.jsp"><button>Back</button></a>
 	<a href="add_vault_amt.jsp"><button>Add Vault Amount</button></a>
 	</div>
 </body>

@@ -46,6 +46,7 @@ public class total_cal extends HttpServlet {
 		int quantitys=Integer.parseInt(quantity);
 		
 		int total=0;
+		int balance=0;
 		
 		total=User_Process.total(quantitys, prices);
 		

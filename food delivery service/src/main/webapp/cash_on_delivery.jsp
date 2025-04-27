@@ -20,7 +20,7 @@
 	position:absolute;
 	padding-right:5px;
 	left:38%;
-	top:40px;
+	top:70px;
 	box-shadow:0 10px 30px black;
 	border-radius:20px;
 	background-color:white;
@@ -73,8 +73,8 @@
 
 </head>
 <body>
-
-	<div class="content" style="width:80%; top:70px; left:10%;">
+	<img alt="successful" src="images/order.png" style="width:280px;height:280px;position:absolute;top:190px;left:81%;z-index:2;">
+	<div class="content" style="width:80%; left:10%;">
 	<h2>Booking</h2>
 	
 	<form action="cash_on_delivery" method="post">
@@ -111,7 +111,7 @@
 	<label>Address</label>
 	<input style="margin-left:73px;" id="address" type="text" name="address" placeholder="Address"><br>
 
-	<button style="margin-left:79%; margin-top:-30px;" class="next" onclick = "next(event)">Order</button>
+	<button style="margin-left:79%;" class="next" onclick = "next(event)">Order</button>
 	
 	</form>
 	
